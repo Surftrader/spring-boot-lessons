@@ -9,11 +9,11 @@ public class IntroController {
 
     @GetMapping("index")
     public String index() {
-        return "index";
+        return "intro/index";
     }
     @GetMapping("about")
     public String about() {
-        return "about";
+        return "intro/about";
     }
     @ResponseBody
     @GetMapping("users")
