@@ -1,6 +1,7 @@
 package ua.com.poseal.springbootlessons.members.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 
     @GetMapping
-    public String toMembers() {
+    public String toMembers(Model model) {
+        model.addAttribute("firstName", "Garry");
+        model.addAttribute("lastName", "Potter");
         return "members/members";
     }
 
