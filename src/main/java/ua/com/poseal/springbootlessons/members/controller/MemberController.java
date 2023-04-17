@@ -6,15 +6,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ua.com.poseal.springbootlessons.members.models.Member;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/members")
 public class MemberController {
+    private static final List<Member> members = new ArrayList<>();
 
     @GetMapping
     public String toMembers(Model model) {
-        model.addAttribute("firstName", "Garry");
-        model.addAttribute("lastName", "Potter");
+        model.addAttribute("members", members);
         return "members/members";
     }
 
@@ -25,8 +29,10 @@ public class MemberController {
 
     @PostMapping("new_member/create")
     public String createMember(@RequestParam String firstName,
-                               @RequestParam String lastName) {
-        System.out.printf("First name: %s, last name: %s", firstName, lastName);
+                               @RequestParam String lastName,
+                               Model model) {
+//        System.out.printf("First name: %s, last name: %s \n", firstName, lastName);
+        members.add(new Member(firstName, lastName));
         return "redirect:/members";
     }
 }

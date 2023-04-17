@@ -12,8 +12,11 @@
                onclick="location.href='/members/new_member'">
     </form>
     <div>
-        <p>First Name: <span  th:text="${firstName}" /></p>
-        <p>Last Name: <span  th:text="${lastName}" /></p>
+        <ul th:each="member: ${members}">
+            <li>
+                <p>First Name: <span  th:text="${member.firstName}" />, Last Name: <span  th:text="${member.lastName}" /></p>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
